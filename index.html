@@ -4,65 +4,173 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kausthubh Swami | DevOps Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #e2e8f0;
-            --text-muted: #94a3b8;
-            --accent: #38bdf8;
+            --bg-dark: #0d1117;
+            --terminal-bg: #161b22;
+            --card-bg: #21262d;
+            --text-main: #c9d1d9;
+            --text-accent: #58a6ff; /* Cloud Blue */
+            --text-green: #3fb950; /* Success Green */
+            --border: #30363d;
         }
+        
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: var(--bg-color);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
             color: var(--text-main);
             margin: 0;
             padding: 20px;
             line-height: 1.6;
         }
+
+        /* Utility Classes */
+        .mono { font-family: 'Fira Code', monospace; }
+        .text-green { color: var(--text-green); }
+        .text-blue { color: var(--text-accent); }
+        
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
+
+        /* Header */
         header {
-            text-align: center;
-            padding: 40px 0;
-            border-bottom: 1px solid #334155;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
         }
-        h1 { margin: 0; font-size: 2.5rem; color: var(--accent); }
-        h2 { color: var(--accent); border-left: 4px solid var(--accent); padding-left: 10px; margin-top: 40px;}
-        p { color: var(--text-muted); }
         
-        .tag {
-            display: inline-block;
-            background: var(--accent);
-            color: #000;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            margin: 5px 2px;
-            font-weight: bold;
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            color: #fff;
         }
-        .card {
-            background-color: var(--card-bg);
+
+        .status-dot {
+            height: 12px;
+            width: 12px;
+            background-color: var(--text-green);
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 10px;
+            box-shadow: 0 0 10px var(--text-green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Terminal Window Styles */
+        .terminal {
+            background-color: var(--terminal-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            background-color: #010409;
+            padding: 10px 15px;
+            display: flex;
+            gap: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .red { background-color: #ff5f56; }
+        .yellow { background-color: #ffbd2e; }
+        .green { background-color: #27c93f; }
+
+        .terminal-body {
             padding: 20px;
-            border-radius: 10px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+
+        /* Grid for Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--text-accent);
+        }
+
+        /* Projects */
+        .project-card {
+            background: var(--terminal-bg);
+            border-left: 4px solid var(--text-accent);
+            padding: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            border-radius: 0 8px 8px 0;
         }
-        .contact-btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: #0f172a;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
+
+        .project-tech {
+            font-size: 0.85rem;
+            color: var(--text-muted);
             margin-top: 10px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
         }
-        /* Mobile Tweaks */
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
+
+        .tech-tag {
+            background: rgba(88, 166, 255, 0.1);
+            color: var(--text-accent);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: var(--text-green);
+            color: #000;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+        }
+        .btn:hover { background-color: #2ea043; }
+        
+        .social-links a {
+            color: var(--text-accent);
+            margin-right: 15px;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.8rem;
+            color: #8b949e;
         }
     </style>
 </head>
@@ -70,82 +178,92 @@
 
 <div class="container">
     <header>
-        <h1>Kausthubh Swami</h1>
-        <p style="font-size: 1.2rem; color: #fff;">DevOps Engineer & Cloud Infrastructure Specialist</p>
-        <p>Jaipur, Rajasthan | +91 6350197624</p>
-        <a href="mailto:Kausthubhswami@gmail.com" class="contact-btn">Contact Me</a>
+        <div style="display: flex; align-items: center;">
+            <h1 class="mono">Kausthubh Swami</h1>
+            <span class="status-dot" title="System Online"></span>
+        </div>
+        <p style="font-size: 1.2rem; margin-top: 0;">DevOps Engineer | Cloud Infrastructure</p>
+        <div class="social-links mono">
+            <a href="mailto:Kausthubhswami@gmail.com">./email</a>
+            <a href="#">./github</a>
+            <a href="#">./linkedin</a>
+        </div>
     </header>
 
-    <section>
-        <h2>About Me</h2>
-        <p>
-            DevOps Engineer with 6 months of intense internship experience focused on improving system reliability and security. 
-            I specialize in reducing deployment times through automation and ensuring high availability for cloud infrastructure. 
-            Passionate about AWS, Kubernetes, and continuous improvement.
-        </p>
-    </section>
-
-    <section>
-        <h2>Technical Skills</h2>
-        <div>
-            <span class="tag">AWS (EC2, S3, VPC, IAM)</span>
-            <span class="tag">Linux</span>
-            <span class="tag">Windows</span>
-            <span class="tag">Docker</span>
-            <span class="tag">Kubernetes</span>
-            <span class="tag">Terraform</span>
-            <span class="tag">Jenkins</span>
-            <span class="tag">Ansible</span>
-            <span class="tag">GitHub</span>
-            <span class="tag">Nginx</span>
-            <span class="tag">MySQL</span>
+    <div class="terminal">
+        <div class="terminal-header">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+            <span style="margin-left: 10px; font-size: 0.8rem; color: #8b949e;">user@kausthubh-laptop: ~</span>
         </div>
-    </section>
-
-    <section>
-        <h2>Featured Projects</h2>
-        
-        <div class="card">
-            <h3 style="margin-top:0;">Custom Load Balancer with EC2</h3>
-            <p><strong>Tech:</strong> Nginx, AWS Load Balancer, EC2</p>
-            <ul>
-                <li>Developed a cost-effective custom load balancer using Nginx on AWS EC2.</li>
-                <li>Reduced deployment time by 30% through automation workflows.</li>
-                <li>Improved collaboration between dev and ops teams.</li>
-            </ul>
+        <div class="terminal-body">
+            <p><span class="text-green">➜</span> <span class="text-blue">~</span> cat profile.txt</p>
+            <p>
+                DevOps Intern focused on improving system reliability and cost-effectiveness. 
+                Experienced in CI/CD, automation, and cloud safety practices.
+                <br><br>
+                <span class="text-green">➜</span> <span class="text-blue">~</span> current_status<br>
+                "Training in AWS, Docker, and Kubernetes at Upflairs Pvt. Ltd."
+            </p>
         </div>
+    </div>
 
-        <div class="card">
-            <h3 style="margin-top:0;">High-Availability Web Hosting</h3>
-            <p><strong>Tech:</strong> AWS, Apache, MySQL (Master-Slave)</p>
-            <ul>
-                <li>Implemented MySQL master-slave replication to enhance scalability and data consistency.</li>
-                <li>Deployed a dynamic HTML website backed by replicated databases.</li>
-                <li>Configured CloudWatch alarms for performance monitoring.</li>
-            </ul>
-        </div>
-    </section>
+    <h2 class="mono"><span class="text-blue">#</span> Technical_Stack</h2>
+    <div class="skills-grid">
+        <div class="skill-card mono">AWS (EC2/S3)</div>
+        <div class="skill-card mono">Docker & K8s</div>
+        <div class="skill-card mono">Terraform</div>
+        <div class="skill-card mono">Jenkins</div>
+        <div class="skill-card mono">Linux / Bash</div>
+        <div class="skill-card mono">Nginx</div>
+        <div class="skill-card mono">MySQL</div>
+        <div class="skill-card mono">Ansible</div>
+    </div>
 
-    <section>
-        <h2>Experience</h2>
-        <div class="card">
-            <h3 style="margin-top:0;">DevOps Intern</h3>
-            <p style="color: var(--accent);">Upflairs Pvt. Ltd. | Jan 2025 - Jun 2025</p>
-            <p>Trained in AWS services, containerization with Docker/Kubernetes, and automating server configuration with Ansible.</p>
-        </div>
-    </section>
-
-    <section>
-        <h2>Achievements</h2>
-        <ul>
-            <li><strong>Research:</strong> Published paper on Cloud Computing Platforms in Pratibodh Journal (ISSN-indexed), June 2025.</li>
-            <li><strong>Awards:</strong> Rajya Puruskar Award (Bharat Scouts and Guides).</li>
-            <li><strong>Adventure:</strong> Completed 45km Himalayan trek at 7,227 ft altitude.</li>
-        </ul>
-    </section>
+    <h2 class="mono"><span class="text-blue">#</span> Deployed_Projects</h2>
     
-    <footer style="text-align: center; padding: 20px; font-size: 0.8rem; color: #666;">
-        <p>&copy; 2025 Kausthubh Swami. Hosted on Vercel.</p>
+    <div class="project-card">
+        <h3 class="mono">Custom Load Balancer</h3>
+        <p>Designed a cost-effective load balancer using Nginx on AWS EC2. Resulted in a <strong>30% reduction in deployment time</strong> via automation.</p>
+        <div class="project-tech">
+            <span class="tech-tag">AWS EC2</span>
+            <span class="tech-tag">Nginx</span>
+            <span class="tech-tag">Automation</span>
+        </div>
+    </div>
+
+    <div class="project-card">
+        <h3 class="mono">HA Website & DB Replication</h3>
+        <p>Deployed a dynamic HTML site with MySQL master-slave replication for high availability and data consistency. Integrated CloudWatch alarms for monitoring.</p>
+        <div class="project-tech">
+            <span class="tech-tag">Apache</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">CloudWatch</span>
+        </div>
+    </div>
+
+    <h2 class="mono"><span class="text-blue">#</span> Logs / Achievements</h2>
+    <div style="border: 1px solid var(--border); padding: 20px; border-radius: 8px; background: var(--terminal-bg);">
+        <ul class="mono" style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 10px;">
+                <span class="text-green">✔</span> Published Research: "Cloud Computing Platforms" in Pratibodh Journal (ISSN-indexed).
+            </li>
+            <li style="margin-bottom: 10px;">
+                <span class="text-green">✔</span> Rajya Puruskar Award: Bharat Scouts and Guides.
+            </li>
+            <li>
+                <span class="text-green">✔</span> Trekking Record: 45km Himalayan trek at 7,227 ft.
+            </li>
+        </ul>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="mailto:Kausthubhswami@gmail.com" class="btn">Start Collaboration</a>
+    </div>
+
+    <footer>
+        <p class="mono">Build: v1.0.0 | Deployed on Vercel</p>
     </footer>
 </div>
 
