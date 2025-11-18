@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kausthubh Swami | DevOps Engineer</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <style>
         :root {
@@ -17,6 +20,7 @@
             --text-accent: #58a6ff; /* Cloud Blue */
             --text-green: #3fb950; /* Success Green */
             --border: #30363d;
+            --icon-size: 40px; /* Size for floating icons */
         }
         
         body {
@@ -26,6 +30,8 @@
             margin: 0;
             padding: 20px;
             line-height: 1.6;
+            position: relative; /* For absolute positioning of floating icons */
+            overflow-x: hidden; /* Prevent horizontal scroll from floating icons */
         }
 
         /* Utility Classes */
@@ -36,6 +42,21 @@
         .container {
             max-width: 900px;
             margin: 0 auto;
+            position: relative; /* Keep content above floating icons */
+            z-index: 10;
+        }
+
+        /* --- Animations --- */
+        @keyframes pulse {
+            0% { opacity: 1; box-shadow: 0 0 10px var(--text-green); }
+            50% { opacity: 0.6; box-shadow: 0 0 5px var(--text-green); }
+            100% { opacity: 1; box-shadow: 0 0 10px var(--text-green); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
+            50% { transform: translateY(-10px) rotate(2deg); opacity: 1; }
+            100% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
         }
 
         /* Header */
@@ -46,27 +67,50 @@
         }
         
         h1 {
-            font-size: 2.2rem;
+            font-size: 2.5rem; /* Slightly larger */
             margin-bottom: 5px;
             color: #fff;
         }
 
         .status-dot {
-            height: 12px;
-            width: 12px;
+            height: 15px; /* Slightly larger dot */
+            width: 15px;
             background-color: var(--text-green);
             border-radius: 50%;
             display: inline-block;
-            margin-left: 10px;
-            box-shadow: 0 0 10px var(--text-green);
-            animation: pulse 2s infinite;
+            margin-left: 15px; /* More separation */
+            animation: pulse 2s infinite ease-in-out;
         }
 
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
+        /* --- Floating Icons Section --- */
+        .floating-icons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Allows clicks on content below */
+            overflow: hidden;
+            opacity: 0.1; /* Subtle effect */
+            z-index: 1;
         }
+
+        .floating-icon {
+            position: absolute;
+            font-size: var(--icon-size);
+            color: var(--text-accent);
+            animation: float 5s infinite ease-in-out;
+            filter: blur(0.5px); /* Soften the icons */
+        }
+        
+        /* Specific icon positioning and animation timing */
+        .floating-icon:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; color: var(--text-green); }
+        .floating-icon:nth-child(2) { top: 30%; right: 15%; animation-delay: 1.5s; }
+        .floating-icon:nth-child(3) { bottom: 15%; left: 20%; animation-delay: 3s; color: #f0db4f; /* Yellow for JS/Nginx */ }
+        .floating-icon:nth-child(4) { top: 50%; left: 85%; animation-delay: 0.5s; }
+        .floating-icon:nth-child(5) { bottom: 5%; right: 50%; animation-delay: 2.5s; color: #e44d26; /* Red for HTML/Jenkins */ }
+        /* --- End Floating Icons Section --- */
+
 
         /* Terminal Window Styles */
         .terminal {
@@ -85,6 +129,7 @@
             display: flex;
             gap: 8px;
             border-bottom: 1px solid var(--border);
+            align-items: center;
         }
 
         .dot { width: 12px; height: 12px; border-radius: 50%; }
@@ -95,7 +140,7 @@
         .terminal-body {
             padding: 20px;
             font-family: 'Fira Code', monospace;
-            font-size: 0.9rem;
+            font-size: 0.95rem; /* Slightly larger text */
         }
 
         /* Grid for Skills */
@@ -112,63 +157,82 @@
             padding: 15px;
             border-radius: 6px;
             text-align: center;
-            transition: transform 0.2s, border-color 0.2s;
+            transition: transform 0.3s, border-color 0.3s, background-color 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .skill-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--text-accent);
+            transform: translateY(-5px) scale(1.03);
+            border-color: var(--text-green); /* Change border on hover */
+            background-color: #2c333d; /* Subtle background change */
         }
 
         /* Projects */
         .project-card {
             background: var(--terminal-bg);
-            border-left: 4px solid var(--text-accent);
+            border-left: 5px solid var(--text-accent); /* Thicker border */
             padding: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             border-radius: 0 8px 8px 0;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            transition: background-color 0.3s;
+        }
+        
+        .project-card:hover {
+            background-color: #1f252c;
         }
 
         .project-tech {
             font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 10px;
+            color: #8b949e;
+            margin-top: 15px;
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
         }
 
         .tech-tag {
-            background: rgba(88, 166, 255, 0.1);
+            background: rgba(88, 166, 255, 0.15); /* Slightly stronger blue background */
             color: var(--text-accent);
-            padding: 2px 8px;
+            padding: 3px 10px;
             border-radius: 4px;
             font-family: 'Fira Code', monospace;
+            border: 1px solid rgba(88, 166, 255, 0.3);
         }
 
         /* Buttons */
         .btn {
             display: inline-block;
             background-color: var(--text-green);
-            color: #000;
-            padding: 10px 20px;
+            color: var(--bg-dark); /* Dark text on green button */
+            padding: 12px 25px;
             text-decoration: none;
             border-radius: 6px;
-            font-weight: 600;
+            font-weight: 700;
             margin-top: 20px;
-            transition: background-color 0.2s;
+            transition: background-color 0.2s, transform 0.1s;
+            box-shadow: 0 5px 15px rgba(63, 185, 80, 0.4);
         }
-        .btn:hover { background-color: #2ea043; }
+        .btn:hover { 
+            background-color: #55d064; 
+            transform: translateY(-2px);
+        }
         
         .social-links a {
             color: var(--text-accent);
-            margin-right: 15px;
+            margin-right: 20px;
             text-decoration: none;
+            transition: color 0.2s;
+        }
+        .social-links a:hover {
+            color: var(--text-green);
         }
 
         footer {
             text-align: center;
             margin-top: 50px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
             font-size: 0.8rem;
             color: #8b949e;
         }
@@ -176,17 +240,24 @@
 </head>
 <body>
 
+<div class="floating-icons">
+    <i class="fab fa-aws floating-icon" style="top: 10%; left: 5%;"></i>
+    <i class="fab fa-docker floating-icon" style="top: 30%; right: 15%;"></i>
+    <i class="fab fa-jenkins floating-icon" style="bottom: 15%; left: 20%;"></i>
+    <i class="fab fa-git-alt floating-icon" style="top: 50%; left: 85%;"></i>
+    <i class="fas fa-server floating-icon" style="bottom: 5%; right: 50%;"></i>
+</div>
 <div class="container">
     <header>
         <div style="display: flex; align-items: center;">
             <h1 class="mono">Kausthubh Swami</h1>
             <span class="status-dot" title="System Online"></span>
         </div>
-        <p style="font-size: 1.2rem; margin-top: 0;">DevOps Engineer | Cloud Infrastructure</p>
+        <p style="font-size: 1.3rem; margin-top: 0; color: #8b949e;">DevOps Engineer | Cloud Infrastructure</p>
         <div class="social-links mono">
-            <a href="mailto:Kausthubhswami@gmail.com">./email</a>
-            <a href="#">./github</a>
-            <a href="#">./linkedin</a>
+            <a href="mailto:Kausthubhswami@gmail.com"><i class="fas fa-envelope"></i> ./email</a>
+            <a href="#"><i class="fab fa-github"></i> ./github</a>
+            <a href="#"><i class="fab fa-linkedin"></i> ./linkedin</a>
         </div>
     </header>
 
@@ -209,19 +280,19 @@
         </div>
     </div>
 
-    <h2 class="mono"><span class="text-blue">#</span> Technical_Stack</h2>
+    <h2 class="mono"><i class="fas fa-code-branch text-blue"></i> Technical_Stack</h2>
     <div class="skills-grid">
-        <div class="skill-card mono">AWS (EC2/S3)</div>
-        <div class="skill-card mono">Docker & K8s</div>
-        <div class="skill-card mono">Terraform</div>
-        <div class="skill-card mono">Jenkins</div>
-        <div class="skill-card mono">Linux / Bash</div>
-        <div class="skill-card mono">Nginx</div>
-        <div class="skill-card mono">MySQL</div>
-        <div class="skill-card mono">Ansible</div>
+        <div class="skill-card mono"><i class="fab fa-aws text-green"></i> AWS (EC2/S3)</div>
+        <div class="skill-card mono"><i class="fab fa-docker text-blue"></i> Docker & K8s</div>
+        <div class="skill-card mono"><i class="fas fa-mountain text-green"></i> Terraform</div>
+        <div class="skill-card mono"><i class="fab fa-jenkins text-blue"></i> Jenkins</div>
+        <div class="skill-card mono"><i class="fab fa-linux text-green"></i> Linux / Bash</div>
+        <div class="skill-card mono"><i class="fas fa-cogs text-blue"></i> Nginx</div>
+        <div class="skill-card mono"><i class="fas fa-database text-green"></i> MySQL</div>
+        <div class="skill-card mono"><i class="fas fa-robot text-blue"></i> Ansible</div>
     </div>
 
-    <h2 class="mono"><span class="text-blue">#</span> Deployed_Projects</h2>
+    <h2 class="mono"><i class="fas fa-rocket text-blue"></i> Deployed_Projects</h2>
     
     <div class="project-card">
         <h3 class="mono">Custom Load Balancer</h3>
@@ -243,17 +314,17 @@
         </div>
     </div>
 
-    <h2 class="mono"><span class="text-blue">#</span> Logs / Achievements</h2>
+    <h2 class="mono"><i class="fas fa-clipboard-list text-blue"></i> Logs / Achievements</h2>
     <div style="border: 1px solid var(--border); padding: 20px; border-radius: 8px; background: var(--terminal-bg);">
         <ul class="mono" style="list-style: none; padding: 0;">
             <li style="margin-bottom: 10px;">
-                <span class="text-green">✔</span> Published Research: "Cloud Computing Platforms" in Pratibodh Journal (ISSN-indexed).
+                <span class="text-green">★</span> Published Research: "Cloud Computing Platforms" in Pratibodh Journal (ISSN-indexed).
             </li>
             <li style="margin-bottom: 10px;">
-                <span class="text-green">✔</span> Rajya Puruskar Award: Bharat Scouts and Guides.
+                <span class="text-green">★</span> Rajya Puruskar Award: Bharat Scouts and Guides.
             </li>
             <li>
-                <span class="text-green">✔</span> Trekking Record: 45km Himalayan trek at 7,227 ft.
+                <span class="text-green">★</span> Trekking Record: 45km Himalayan trek at 7,227 ft.
             </li>
         </ul>
     </div>
@@ -263,7 +334,7 @@
     </div>
 
     <footer>
-        <p class="mono">Build: v1.0.0 | Deployed on Vercel</p>
+        <p class="mono">Build: v1.0.0 | Deployed on Vercel | <span class="text-blue">Source: GitHub</span></p>
     </footer>
 </div>
 
