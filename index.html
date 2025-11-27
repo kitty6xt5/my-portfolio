@@ -1,150 +1,76 @@
-import React from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kausthubh Swami | Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header class="header">
+        <h1 class="name">Kausthubh Swami</h1>
+        <p class="subtitle">B.Tech CSE • DevOps | Cloud | Frontend</p>
 
-// Single-file React component (Tailwind CSS classes assumed available).
-// Default export: paste into a Create React App / Vercel Next.js page (pages/index.js) or preview in Framer.
-
-export default function Portfolio() {
-  const resume = {
-    name: "Kausthubh Swami",
-    title: "B.Tech Student — Computer Science & Engineering",
-    location: "India",
-    graduation: "May 2025",
-    cgpa: "~8.5",
-    email: "your.email@example.com",
-    about:
-      "I am Kausthubh, a final-year Computer Science & Engineering student focused on DevOps, Cloud Computing, and Frontend development. I enjoy building automation and production-ready systems using AWS, Docker, and Jenkins, and I also work with HTML, CSS, and JavaScript for polished user experiences.",
-    skills: [
-      "DevOps & CI/CD (Jenkins, GitHub Actions)",
-      "Cloud — AWS (EC2, S3, IAM basics)",
-      "Containers — Docker",
-      "Linux (Ubuntu)",
-      "Frontend — HTML, CSS, JavaScript, React basics",
-      "Infrastructure as Code (basic)"
-    ],
-    projects: [
-      {
-        title: "CI/CD Automation — Website Deployment",
-        desc:
-          "Automated website updates using GitHub, Jenkins, and Docker. Pipeline builds Docker images, runs tests, and deploys to a production host (experimented with EC2). Focused on reliability and repeatable deployments.",
-        tech: ["GitHub", "Jenkins", "Docker", "AWS"]
-      },
-      {
-        title: "Personal Frontend Projects",
-        desc:
-          "Small responsive sites and UI experiments using HTML, CSS and vanilla JS while learning modern frontend patterns.",
-        tech: ["HTML", "CSS", "JavaScript"]
-      }
-    ],
-    education: {
-      degree: "B.Tech — Computer Science & Engineering",
-      college: "(Add your college name)",
-      grad: "May 2025",
-      cgpa: "~8.5"
-    }
-  };
-
-  return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 antialiased">
-      <header className="max-w-4xl mx-auto p-6 flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-extrabold">{resume.name}</h1>
-          <p className="text-sm text-slate-600">{resume.title} • Graduating {resume.graduation}</p>
-        </div>
-        <nav className="space-x-4 text-sm">
-          <a href="#about" className="hover:underline">About</a>
-          <a href="#skills" className="hover:underline">Skills</a>
-          <a href="#projects" className="hover:underline">Projects</a>
-          <a href="#contact" className="hover:underline">Contact</a>
+        <nav class="nav">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
         </nav>
-      </header>
+    </header>
 
-      <main className="max-w-4xl mx-auto p-6 space-y-10">
-        {/* Hero / About */}
-        <section id="about" className="bg-white p-6 rounded-2xl shadow">
-          <div className="flex flex-col md:flex-row gap-6">
-            <div className="flex-1">
-              <h2 className="text-2xl font-bold">About</h2>
-              <p className="mt-3 text-slate-700">{resume.about}</p>
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <p>
+            I am Kausthubh, a final-year Computer Science & Engineering student (graduating May 2025, CGPA ~8.5).
+            I specialize in DevOps, Cloud Computing, and Frontend Development. I work with AWS, Docker, Jenkins,
+            Linux (Ubuntu), HTML, CSS, and JavaScript.
+        </p>
+        <p>
+            Email: <strong>your.email@example.com</strong>
+        </p>
+    </section>
 
-              <div className="mt-4 text-sm text-slate-600">
-                <div>Location: {resume.location}</div>
-                <div>CGPA: {resume.cgpa}</div>
-              </div>
+    <section id="skills" class="section">
+        <h2>Skills</h2>
+        <ul>
+            <li>DevOps & CI/CD (Jenkins, GitHub Actions)</li>
+            <li>Cloud — AWS (EC2, S3, IAM basics)</li>
+            <li>Docker</li>
+            <li>Linux (Ubuntu)</li>
+            <li>Frontend — HTML, CSS, JavaScript</li>
+        </ul>
+    </section>
 
-              <div className="mt-6 flex gap-3">
-                <a
-                  href="/resume.pdf"
-                  className="inline-block px-4 py-2 rounded-lg border border-slate-200 bg-slate-100 text-sm hover:bg-slate-50"
-                  download
-                >
-                  Download Resume (upload resume.pdf to /public)
-                </a>
-                <a
-                  href={`mailto:${resume.email}`}
-                  className="inline-block px-4 py-2 rounded-lg bg-slate-900 text-white text-sm hover:opacity-90"
-                >
-                  Email — {resume.email}
-                </a>
-              </div>
-            </div>
+    <section id="projects" class="section">
+        <h2>Projects</h2>
 
-            <aside className="w-full md:w-48 p-4 bg-slate-50 rounded-lg border border-slate-100">
-              <h3 className="text-sm font-semibold text-slate-700">Education</h3>
-              <p className="text-sm text-slate-600 mt-2">{resume.education.degree}</p>
-              <p className="text-sm text-slate-600">{resume.education.college}</p>
-              <p className="text-sm text-slate-600 mt-1">Graduation: {resume.education.grad}</p>
-              <p className="text-sm text-slate-600">CGPA: {resume.education.cgpa}</p>
-            </aside>
-          </div>
-        </section>
+        <div class="project-card">
+            <h3>CI/CD Automation — Website Deployment</h3>
+            <p>
+                Automated website updates using GitHub, Jenkins, and Docker. Pipeline builds Docker images, runs tests,
+                and deploys to a production machine.
+            </p>
+            <p class="tech">Tech: GitHub, Jenkins, Docker, AWS</p>
+        </div>
 
-        {/* Skills */}
-        <section id="skills" className="bg-white p-6 rounded-2xl shadow">
-          <h2 className="text-2xl font-bold">Skills</h2>
-          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {resume.skills.map((s) => (
-              <div key={s} className="p-3 rounded-lg border border-slate-100">
-                <p className="text-sm font-medium">{s}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <div class="project-card">
+            <h3>Frontend Projects</h3>
+            <p>
+                Designed small responsive web pages using HTML, CSS, and JavaScript.
+            </p>
+            <p class="tech">Tech: HTML, CSS, JavaScript</p>
+        </div>
+    </section>
 
-        {/* Projects */}
-        <section id="projects" className="bg-white p-6 rounded-2xl shadow">
-          <h2 className="text-2xl font-bold">Projects</h2>
-          <div className="mt-4 space-y-4">
-            {resume.projects.map((p) => (
-              <div key={p.title} className="p-4 border border-slate-100 rounded-lg">
-                <h3 className="font-semibold">{p.title}</h3>
-                <p className="text-sm text-slate-700 mt-1">{p.desc}</p>
-                <div className="text-xs text-slate-500 mt-2">Tech — {p.tech.join(", ")}</div>
-              </div>
-            ))}
-          </div>
-        </section>
+    <section id="contact" class="section">
+        <h2>Contact</h2>
+        <p>I am open to internships and collaboration opportunities!</p>
+        <p>Email me at: <strong>your.email@example.com</strong></p>
+    </section>
 
-        {/* Contact */}
-        <section id="contact" className="bg-white p-6 rounded-2xl shadow">
-          <h2 className="text-2xl font-bold">Contact</h2>
-          <p className="mt-3 text-slate-700">I'm open to internships, collaborations, and interview opportunities. Best way to reach me is by email.</p>
-
-          <div className="mt-4">
-            <a
-              href={`mailto:${resume.email}`}
-              className="inline-block px-4 py-2 rounded-lg bg-slate-900 text-white text-sm hover:opacity-90"
-            >
-              Email — {resume.email}
-            </a>
-          </div>
-
-          <div className="mt-6 text-xs text-slate-500">Made with ❤️ • No analytics scripts included.</div>
-        </section>
-      </main>
-
-      <footer className="max-w-4xl mx-auto p-6 text-center text-xs text-slate-500">
-        © {new Date().getFullYear()} {resume.name} — Portfolio • Built for Vercel deployment
-      </footer>
-    </div>
-  );
-}
+    <footer class="footer">
+        © 2025 Kausthubh Swami — Portfolio • No analytics/tracking used
+    </footer>
+</body>
+</html>
