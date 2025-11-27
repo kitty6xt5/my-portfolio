@@ -3,102 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Kausthubh Swami - DevOps Engineer | AWS, Docker, Kubernetes, Terraform, Jenkins"/>
   <title>Kausthubh Swami | DevOps Engineer</title>
+  <meta name="description" content="DevOps Engineer | AWS • Docker • Kubernetes • Terraform | Building unbreakable cloud systems"/>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome -->
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
 
-  <!-- Your Custom CSS -->
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 
-  <div class="container">
-
-    <header>
-      <h1>Kausthubh Swami</h1>
-      <p class="tagline">DevOps Engineer • Cloud | Automation | CI/CD</p>
-      <div class="status">Available for Full-time & Internship Roles</div>
-      <div class="links">
-        <a href="mailto:kausthubhswami@gmail.com"><i class="fas fa-envelope"></i> Email</a>
-        <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-        <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>
+        <span class="gradient-text">Kausthubh Swami</span>
+      </h1>
+      <p class="tagline">DevOps Engineer • Cloud Infrastructure & Automation</p>
+      <div class="status-badge">
+        <span class="dot"></span>
+        Available for Full-time & Internships
       </div>
-    </header>
-
-    <section class="about">
-      <h2>About Me</h2>
-      <p>
-        Final-year B.Tech CSE student passionate about building reliable, scalable, and cost-efficient cloud systems.
-        Currently training in AWS, Docker, Kubernetes, Terraform, Jenkins, and Nginx at <strong>Upflairs Pvt. Ltd.</strong>
-        I automate everything so servers can run themselves while I drink coffee.
-      </p>
-    </section>
-
-    <section>
-      <h2>Technical Stack</h2>
-      <div class="grid">
-        <div class="card skill"><i class="fab fa-aws"></i><span>AWS<br>(EC2, S3, VPC)</span></div>
-        <div class="card skill"><i class="fab fa-docker"></i><span>Docker &<br>Kubernetes</span></div>
-        <div class="card skill"><i class="fas fa-code-branch"></i><span>Terraform<br>IaC</span></div>
-        <div class="card skill"><i class="fab fa-jenkins"></i><span>Jenkins<br>CI/CD</span></div>
-        <div class="card skill"><i class="fab fa-linux"></i><span>Linux &<br>Bash</span></div>
-        <div class="card skill"><i class="fas fa-server"></i><span>Nginx<br>Load Balancer</span></div>
-        <div class="card skill"><i class="fas fa-play"></i><span>Ansible<br>Automation</span></div>
-        <div class="card skill"><i class="fas fa-database"></i><span>MySQL<br>Replication</span></div>
+      <div class="social-links">
+        <a href="mailto:kausthubhswami@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
       </div>
-    </section>
+    </div>
+  </header>
 
-    <section class="projects">
-      <h2>Featured Projects</h2>
+  <!-- About -->
+  <section class="container about">
+    <h2>About Me</h2>
+    <p>
+      Final-year B.Tech CSE student turning caffeine into reliable, auto-scaling cloud systems.<br>
+      Currently mastering <strong>AWS, Docker, Kubernetes, Terraform, Jenkins & Nginx</strong> at Upflairs Pvt. Ltd.<br>
+      I don’t just deploy — I make systems that deploy themselves.
+    </p>
+  </section>
 
-      <div class="card project">
-        <h3>Custom Nginx Load Balancer (AWS)</h3>
-        <p>Built a production-grade load balancer using Nginx + EC2 Auto Scaling Group. Reduced deployment time by <strong>30%</strong> using full automation.</p>
-        <div class="tags">
-          <span class="tag">AWS</span>
-          <span class="tag">Nginx</span>
-          <span class="tag">Auto Scaling</span>
-          <span class="tag">Bash Scripting</span>
-        </div>
+  <!-- Skills -->
+  <section class="container skills">
+    <h2>Tech Stack</h2>
+    <div class="skills-grid">
+      <div class="skill-card" data-icon="fa-aws" data-color="#FF9900">AWS</div>
+      <div class="skill-card" data-icon="fa-docker" data-color="#2496ED">Docker</div>
+      <div class="skill-card" data-icon="fa-kubernetes" data-color="#326CE5">Kubernetes</div>
+      <div class="skill-card" data-icon="fa-code-branch" data-color="#F05133">Terraform</div>
+      <div class="skill-card" data-icon="fa-jenkins" data-color="#D33833">Jenkins</div>
+      <div class="skill-card" data-icon="fa-server" data-color="#00C7B7">Nginx</div>
+      <div class="skill-card" data-icon="fa-play" data-color="#E535AB">Ansible</div>
+      <div class="skill-card" data-icon="fa-linux" data-color="#FCC624">Linux</div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="container projects">
+    <h2>Featured Projects</h2>
+
+    <div class="project-card">
+      <div class="project-header">
+        <h3>Custom Nginx Load Balancer on AWS</h3>
+        <span class="project-badge">Live Project</span>
       </div>
+      <p>Built a cost-effective, auto-scaling load balancer using Nginx + EC2 ASG. Achieved <strong>30% faster deployments</strong> via full Bash automation.</p>
+      <div class="tech-tags">
+        <span>AWS EC2</span><span>Nginx</span><span>Auto Scaling</span><span>Bash</span>
+      </div>
+    </div>
 
-      <div class="card project">
+    <div class="project-card">
+      <div class="project-header">
         <h3>High-Availability Website + MySQL Replication</h3>
-        <p>Deployed dynamic website with master-slave MySQL setup, CloudWatch alerts, and automated failover testing.</p>
-        <div class="tags">
-          <span class="tag">Apache</span>
-          <span class="tag">MySQL</span>
-          <span class="tag">CloudWatch</span>
-          <span class="tag">HA</span>
-        </div>
+        <span class="project-badge">Production Grade</span>
       </div>
+      <p>Deployed dynamic site with master-slave MySQL, CloudWatch alarms, automated backups — zero downtime in failover tests.</p>
+      <div class="tech-tags">
+        <span>Apache</span><span>MySQL</span><span>CloudWatch</span><span>Shell</span>
+      </div>
+    </div>
 
-      <div class="card project">
+    <div class="project-card">
+      <div class="project-header">
         <h3>3-Node Kubernetes Cluster</h3>
-        <p>Set up K8s cluster using kubeadm, deployed Nginx Ingress Controller and a voting app with persistent storage.</p>
-        <div class="tags">
-          <span class="tag">Kubernetes</span>
-          <span class="tag">Ingress</span>
-          <span class="tag">PV/PVC</span>
-        </div>
+        <span class="project-badge">MiniKube → Real World</span>
       </div>
-    </section>
+      <p>Set up production-like K8s cluster with Ingress, Persistent Volumes, and deployed voting app.</p>
+      <div class="tech-tags">
+        <span>Kubernetes</span><span>kubeadm</span><span>Ingress</span><span>Helm</span>
+      </div>
+    </div>
+  </section>
 
-    <section class="cta">
-      <a href="mailto:kausthubhswami@gmail.com" class="btn">Let's Work Together</a>
-    </section>
-
-    <footer>
-      © 2025 Kausthubh Swami • Handcrafted with HTML & CSS • Deployed with love on Vercel
-    </footer>
-
-  </div>
-</body>
-</html>
+  <!-- CTA -->
+  <section class="container cta">
+    <h2>Let's Build Something Unbreakable</h2>
+    <a href="mailto:kausthubhswami@gmail.com" class="btn-primary">Get In Touch</a>
+  </section
