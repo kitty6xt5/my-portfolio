@@ -1,108 +1,150 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kausthubh Swami | DevOps Engineer</title>
-  <meta name="description" content="DevOps Engineer | AWS • Docker • Kubernetes • Terraform | Building unbreakable cloud systems"/>
+import React from "react";
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+// Single-file React component (Tailwind CSS classes assumed available).
+// Default export: paste into a Create React App / Vercel Next.js page (pages/index.js) or preview in Framer.
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+export default function Portfolio() {
+  const resume = {
+    name: "Kausthubh Swami",
+    title: "B.Tech Student — Computer Science & Engineering",
+    location: "India",
+    graduation: "May 2025",
+    cgpa: "~8.5",
+    email: "your.email@example.com",
+    about:
+      "I am Kausthubh, a final-year Computer Science & Engineering student focused on DevOps, Cloud Computing, and Frontend development. I enjoy building automation and production-ready systems using AWS, Docker, and Jenkins, and I also work with HTML, CSS, and JavaScript for polished user experiences.",
+    skills: [
+      "DevOps & CI/CD (Jenkins, GitHub Actions)",
+      "Cloud — AWS (EC2, S3, IAM basics)",
+      "Containers — Docker",
+      "Linux (Ubuntu)",
+      "Frontend — HTML, CSS, JavaScript, React basics",
+      "Infrastructure as Code (basic)"
+    ],
+    projects: [
+      {
+        title: "CI/CD Automation — Website Deployment",
+        desc:
+          "Automated website updates using GitHub, Jenkins, and Docker. Pipeline builds Docker images, runs tests, and deploys to a production host (experimented with EC2). Focused on reliability and repeatable deployments.",
+        tech: ["GitHub", "Jenkins", "Docker", "AWS"]
+      },
+      {
+        title: "Personal Frontend Projects",
+        desc:
+          "Small responsive sites and UI experiments using HTML, CSS and vanilla JS while learning modern frontend patterns.",
+        tech: ["HTML", "CSS", "JavaScript"]
+      }
+    ],
+    education: {
+      degree: "B.Tech — Computer Science & Engineering",
+      college: "(Add your college name)",
+      grad: "May 2025",
+      cgpa: "~8.5"
+    }
+  };
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="styles.css"/>
-</head>
-<body>
+  return (
+    <div className="min-h-screen bg-slate-50 text-slate-900 antialiased">
+      <header className="max-w-4xl mx-auto p-6 flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-extrabold">{resume.name}</h1>
+          <p className="text-sm text-slate-600">{resume.title} • Graduating {resume.graduation}</p>
+        </div>
+        <nav className="space-x-4 text-sm">
+          <a href="#about" className="hover:underline">About</a>
+          <a href="#skills" className="hover:underline">Skills</a>
+          <a href="#projects" className="hover:underline">Projects</a>
+          <a href="#contact" className="hover:underline">Contact</a>
+        </nav>
+      </header>
 
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="hero-content">
-      <h1>
-        <span class="gradient-text">Kausthubh Swami</span>
-      </h1>
-      <p class="tagline">DevOps Engineer • Cloud Infrastructure & Automation</p>
-      <div class="status-badge">
-        <span class="dot"></span>
-        Available for Full-time & Internships
-      </div>
-      <div class="social-links">
-        <a href="mailto:kausthubhswami@gmail.com"><i class="fas fa-envelope"></i></a>
-        <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
-      </div>
+      <main className="max-w-4xl mx-auto p-6 space-y-10">
+        {/* Hero / About */}
+        <section id="about" className="bg-white p-6 rounded-2xl shadow">
+          <div className="flex flex-col md:flex-row gap-6">
+            <div className="flex-1">
+              <h2 className="text-2xl font-bold">About</h2>
+              <p className="mt-3 text-slate-700">{resume.about}</p>
+
+              <div className="mt-4 text-sm text-slate-600">
+                <div>Location: {resume.location}</div>
+                <div>CGPA: {resume.cgpa}</div>
+              </div>
+
+              <div className="mt-6 flex gap-3">
+                <a
+                  href="/resume.pdf"
+                  className="inline-block px-4 py-2 rounded-lg border border-slate-200 bg-slate-100 text-sm hover:bg-slate-50"
+                  download
+                >
+                  Download Resume (upload resume.pdf to /public)
+                </a>
+                <a
+                  href={`mailto:${resume.email}`}
+                  className="inline-block px-4 py-2 rounded-lg bg-slate-900 text-white text-sm hover:opacity-90"
+                >
+                  Email — {resume.email}
+                </a>
+              </div>
+            </div>
+
+            <aside className="w-full md:w-48 p-4 bg-slate-50 rounded-lg border border-slate-100">
+              <h3 className="text-sm font-semibold text-slate-700">Education</h3>
+              <p className="text-sm text-slate-600 mt-2">{resume.education.degree}</p>
+              <p className="text-sm text-slate-600">{resume.education.college}</p>
+              <p className="text-sm text-slate-600 mt-1">Graduation: {resume.education.grad}</p>
+              <p className="text-sm text-slate-600">CGPA: {resume.education.cgpa}</p>
+            </aside>
+          </div>
+        </section>
+
+        {/* Skills */}
+        <section id="skills" className="bg-white p-6 rounded-2xl shadow">
+          <h2 className="text-2xl font-bold">Skills</h2>
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {resume.skills.map((s) => (
+              <div key={s} className="p-3 rounded-lg border border-slate-100">
+                <p className="text-sm font-medium">{s}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Projects */}
+        <section id="projects" className="bg-white p-6 rounded-2xl shadow">
+          <h2 className="text-2xl font-bold">Projects</h2>
+          <div className="mt-4 space-y-4">
+            {resume.projects.map((p) => (
+              <div key={p.title} className="p-4 border border-slate-100 rounded-lg">
+                <h3 className="font-semibold">{p.title}</h3>
+                <p className="text-sm text-slate-700 mt-1">{p.desc}</p>
+                <div className="text-xs text-slate-500 mt-2">Tech — {p.tech.join(", ")}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Contact */}
+        <section id="contact" className="bg-white p-6 rounded-2xl shadow">
+          <h2 className="text-2xl font-bold">Contact</h2>
+          <p className="mt-3 text-slate-700">I'm open to internships, collaborations, and interview opportunities. Best way to reach me is by email.</p>
+
+          <div className="mt-4">
+            <a
+              href={`mailto:${resume.email}`}
+              className="inline-block px-4 py-2 rounded-lg bg-slate-900 text-white text-sm hover:opacity-90"
+            >
+              Email — {resume.email}
+            </a>
+          </div>
+
+          <div className="mt-6 text-xs text-slate-500">Made with ❤️ • No analytics scripts included.</div>
+        </section>
+      </main>
+
+      <footer className="max-w-4xl mx-auto p-6 text-center text-xs text-slate-500">
+        © {new Date().getFullYear()} {resume.name} — Portfolio • Built for Vercel deployment
+      </footer>
     </div>
-  </header>
-
-  <!-- About -->
-  <section class="container about">
-    <h2>About Me</h2>
-    <p>
-      Final-year B.Tech CSE student turning caffeine into reliable, auto-scaling cloud systems.<br>
-      Currently mastering <strong>AWS, Docker, Kubernetes, Terraform, Jenkins & Nginx</strong> at Upflairs Pvt. Ltd.<br>
-      I don’t just deploy — I make systems that deploy themselves.
-    </p>
-  </section>
-
-  <!-- Skills -->
-  <section class="container skills">
-    <h2>Tech Stack</h2>
-    <div class="skills-grid">
-      <div class="skill-card" data-icon="fa-aws" data-color="#FF9900">AWS</div>
-      <div class="skill-card" data-icon="fa-docker" data-color="#2496ED">Docker</div>
-      <div class="skill-card" data-icon="fa-kubernetes" data-color="#326CE5">Kubernetes</div>
-      <div class="skill-card" data-icon="fa-code-branch" data-color="#F05133">Terraform</div>
-      <div class="skill-card" data-icon="fa-jenkins" data-color="#D33833">Jenkins</div>
-      <div class="skill-card" data-icon="fa-server" data-color="#00C7B7">Nginx</div>
-      <div class="skill-card" data-icon="fa-play" data-color="#E535AB">Ansible</div>
-      <div class="skill-card" data-icon="fa-linux" data-color="#FCC624">Linux</div>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section class="container projects">
-    <h2>Featured Projects</h2>
-
-    <div class="project-card">
-      <div class="project-header">
-        <h3>Custom Nginx Load Balancer on AWS</h3>
-        <span class="project-badge">Live Project</span>
-      </div>
-      <p>Built a cost-effective, auto-scaling load balancer using Nginx + EC2 ASG. Achieved <strong>30% faster deployments</strong> via full Bash automation.</p>
-      <div class="tech-tags">
-        <span>AWS EC2</span><span>Nginx</span><span>Auto Scaling</span><span>Bash</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-header">
-        <h3>High-Availability Website + MySQL Replication</h3>
-        <span class="project-badge">Production Grade</span>
-      </div>
-      <p>Deployed dynamic site with master-slave MySQL, CloudWatch alarms, automated backups — zero downtime in failover tests.</p>
-      <div class="tech-tags">
-        <span>Apache</span><span>MySQL</span><span>CloudWatch</span><span>Shell</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-header">
-        <h3>3-Node Kubernetes Cluster</h3>
-        <span class="project-badge">MiniKube → Real World</span>
-      </div>
-      <p>Set up production-like K8s cluster with Ingress, Persistent Volumes, and deployed voting app.</p>
-      <div class="tech-tags">
-        <span>Kubernetes</span><span>kubeadm</span><span>Ingress</span><span>Helm</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="container cta">
-    <h2>Let's Build Something Unbreakable</h2>
-    <a href="mailto:kausthubhswami@gmail.com" class="btn-primary">Get In Touch</a>
-  </section
+  );
+}
